@@ -1,15 +1,15 @@
 import React from "react";
 
-function QuotesItems(props) {
+function QuotesItems() {
   return (
     <>
       <div className="card my-4">
-        <div className="card-header">{props.category}</div>
+        <div className="card-header">Quote</div>
         <div className="card-body">
           <blockquote className="blockquote mb-0">
-            <p>{props.quote}</p>
+            <p>A well-known quote, contained in a blockquote element.</p>
             <footer className="blockquote-footer">
-              {props.author}
+              Someone famous in <cite title="Source Title">Source Title</cite>
             </footer>
           </blockquote>
         </div>

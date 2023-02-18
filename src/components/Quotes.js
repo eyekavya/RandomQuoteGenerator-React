@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import QuotesItems from "./QuotesItems";
 
 function Quotes() {
-  const [quotes, setQuotes] = useState([]);
+  const [articles, setArticles] = useState([]);
 
   const updateQuotes = async () => {
     await fetch("https://api.api-ninjas.com/v1/quotes?category=happiness", {
@@ -13,7 +13,7 @@ function Quotes() {
       },
     }).then((res) => {
       res.text().then((txt) => {
-        setQuotes(JSON.parse(txt));
+        console.log(JSON.parse(txt));
       });
     });
   };
@@ -25,11 +25,7 @@ function Quotes() {
   return (
     <>
       <div className="container my-5">
-        <QuotesItems
-         category={quotes[0]?.category}
-         quote={quotes[0]?.quote}
-         author={quotes[0]?.author}
-         />
+        <QuotesItems />
       </div>
     </>
   );
