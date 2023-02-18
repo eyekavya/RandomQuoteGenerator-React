@@ -17,7 +17,7 @@ function Quotes() {
       },
     }).then((res) => {
       res.text().then((txt) => {
-        setQuotes([...quotes, JSON.parse(txt)[0]]);
+        setQuotes([JSON.parse(txt)[0], ...quotes]);
       });
     });
     setBtnText("Generate Quote");
