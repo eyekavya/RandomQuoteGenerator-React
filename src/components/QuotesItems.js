@@ -8,9 +8,7 @@ function QuotesItems(props) {
         <div className="card-body">
           <blockquote className="blockquote mb-0">
             <p>{props.quote}</p>
-            <footer className="blockquote-footer">
-              {props.author}
-            </footer>
+            <footer className="blockquote-footer">{props.author}</footer>
           </blockquote>
         </div>
       </div>

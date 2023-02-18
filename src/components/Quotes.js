@@ -24,14 +24,21 @@ function Quotes() {
 
   return (
     <>
-    <div><button type="button" className="btn btn-outline-primary">Generate Quote</button></div>
+      <div className="text-center my-5">
+        <button
+          type="button"
+          className="btn btn-outline-primary"
+          onClick={updateQuotes}
+        >
+          Generate Quote
+        </button>
+      </div>
       <div className="container my-5">
-        
         <QuotesItems
-         category={quotes[0]?.category}
-         quote={quotes[0]?.quote}
-         author={quotes[0]?.author}
-         />
+          category={quotes[0]?.category}
+          quote={quotes[0]?.quote}
+          author={quotes[0]?.author}
+        />
       </div>
     </>
   );
