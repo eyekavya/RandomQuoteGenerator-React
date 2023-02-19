@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import QuotesItems from "./QuotesItems";
 
-function Quotes(props) {
-  const [quotes, setQuotes] = useState([]);
+function Quotes({ category = "happiness" }) {
   const [btnText, setBtnText] = useState("Generate Quote");
   const [disableBtn, setDisableBtn] = useState(false);
+  const [quotes, setQuotes] = useState([]);
 
-  const updateQuotes = async () => {
-    // let category = "hope";
+  const updateQuotes = async (empty) => {
     setBtnText("loading...");
     setDisableBtn(true);
-    await fetch(
-      `https://api.api-ninjas.com/v1/quotes?category=${props.category}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Api-Key": process.env.REACT_APP_QUOTES_API,
-        },
-      }
-    ).then((res) => {
+    await fetch(`https://api.api-ninjas.com/v1/quotes?category=${category}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Api-Key": process.env.REACT_APP_QUOTES_API,
+      },
+    }).then((res) => {
       res.text().then((txt) => {
-        setQuotes([JSON.parse(txt)[0], ...quotes]);
+        if (empty === "empty") {
+          setQuotes([JSON.parse(txt)[0]]);
+        } else {
+          setQuotes([JSON.parse(txt)[0], ...quotes]);
+        }
       });
     });
     setBtnText("Generate Quote");
@@ -29,9 +29,8 @@ function Quotes(props) {
   };
 
   useEffect(() => {
-    updateQuotes();
-    console.log(9);
-  }, []);
+    updateQuotes("empty");
+  }, [category]);
 
   return (
     <>
