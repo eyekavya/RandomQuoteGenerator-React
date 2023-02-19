@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Quotes from "./components/Quotes";
@@ -36,6 +35,9 @@ function App() {
           </Route>
           <Route path="/inspirational">
             <Quotes category={"inspirational"} />
+          </Route>
+          <Route path="/">
+            <Quotes category={"happiness"} />
           </Route>
         </Switch>
       </Router>
