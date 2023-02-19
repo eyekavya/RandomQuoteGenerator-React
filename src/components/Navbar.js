@@ -1,6 +1,6 @@
 import React from "react";
 
-function Navbar() {
+function Navbar({ setCurrentCategory }) {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,14 +21,37 @@ function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="/">
-                Home
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="/"
+                category={"happiness"}
+              >
+                Happiness
               </a>
               <a className="nav-link" href="/">
-                Features
+                Hope
               </a>
               <a className="nav-link" href="/">
-                Pricing
+                Funny
+              </a>
+              <a className="nav-link" href="/">
+                Courage
+              </a>
+              <a className="nav-link" href="/">
+                Humor
+              </a>
+              <a className="nav-link" href="/">
+                Life
+              </a>
+              <a className="nav-link" href="/">
+                Health
+              </a>
+              <a className="nav-link" href="/">
+                Morning
+              </a>
+              <a className="nav-link" href="/" category={"inspirational"}>
+                Inspirational
               </a>
             </div>
           </div>
