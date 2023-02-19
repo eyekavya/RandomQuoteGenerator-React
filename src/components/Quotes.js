@@ -3,8 +3,12 @@ import QuotesItems from "./QuotesItems";
 
 function Quotes() {
   const [quotes, setQuotes] = useState([]);
+  const [btnText, setBtnText] = useState("Generate Quote");
+  const [disableBtn, setDisableBtn] = useState(false);
 
   const updateQuotes = async () => {
+    setBtnText("loading...");
+    setDisableBtn(true);
     await fetch("https://api.api-ninjas.com/v1/quotes?category=happiness", {
       method: "GET",
       headers: {
@@ -13,25 +17,41 @@ function Quotes() {
       },
     }).then((res) => {
       res.text().then((txt) => {
-        setQuotes(JSON.parse(txt));
+        setQuotes([JSON.parse(txt)[0], ...quotes]);
       });
     });
+    setBtnText("Generate Quote");
+    setDisableBtn(false);
   };
 
   useEffect(() => {
     updateQuotes();
+    console.log(9);
   }, []);
 
   return (
     <>
-    <div><button type="button" className="btn btn-outline-primary">Generate Quote</button></div>
+      <div className="text-center my-5">
+        <button
+          type="button"
+          className="btn btn-outline-primary"
+          onClick={updateQuotes}
+          disabled={disableBtn}
+        >
+          {btnText}
+        </button>
+      </div>
       <div className="container my-5">
-        
-        <QuotesItems
-         category={quotes[0]?.category}
-         quote={quotes[0]?.quote}
-         author={quotes[0]?.author}
-         />
+        {quotes?.map((e, i) => {
+          return (
+            <QuotesItems
+              key={i}
+              category={e?.category}
+              quote={e?.quote}
+              author={e?.author}
+            />
+          );
+        })}
       </div>
     </>
   );
