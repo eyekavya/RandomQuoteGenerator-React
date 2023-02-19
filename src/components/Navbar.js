@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Navbar({ setCurrentCategory }) {
+function Navbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,38 +22,33 @@ function Navbar({ setCurrentCategory }) {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="/"
-                category={"happiness"}
-              >
+              <Link className="nav-link active" aria-current="page" to="/">
                 Happiness
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/hope">
                 Hope
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/funny">
                 Funny
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/courage">
                 Courage
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/humor">
                 Humor
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/life">
                 Life
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/health">
                 Health
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/morning">
                 Morning
-              </a>
-              <a className="nav-link" href="/" category={"inspirational"}>
+              </Link>
+              <Link className="nav-link" to="/inspirational">
                 Inspirational
-              </a>
+              </Link>
             </div>
           </div>
         </div>
